@@ -3,1324 +3,383 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каримбай Ерсултан - Портфолио</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Менеджер Задач — Каримбай Ерсултан</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary-dark: #0f0a05;
-            --primary-brown: #1a1410;
-            --brown-accent: #8b6f47;
-            --brown-light: #c4a574;
-            --text-primary: #f5f1ed;
-            --text-secondary: #bfb5a0;
-            --border-color: #2a2015;
+            --bg: #0f0a05;
+            --card: #1a1410;
+            --accent: #8b6f47;
+            --light: #c4a574;
+            --text: #f5f1ed;
+            --muted: #bfb5a0;
+            --border: #2a2015;
+            --success: #5a8a5a;
+            --danger: #8a3a3a;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0a05 0%, #1a1410 100%);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* НАВИГАЦИЯ */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 10, 5, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 2rem;
-        }
-
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-nav .logo {
-    font-size: 1.8rem;
-    text-decoration: none;
-    transition: all 0.4s;
-    display: inline-block;
-    cursor: pointer;
-    animation: rocketFly 3s ease-in-out infinite;
-}
-
-@keyframes rocketFly {
-    0% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-10px) rotate(-5deg);
-    }
-    100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-}
-
-nav .logo:hover {
-    animation: none;
-    transform: translateY(-10px) rotate(10deg) scale(1.3);
-    filter: brightness(1.5);
-}
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--brown-light);
-        }
-
-        /* HERO СЕКЦИЯ */
-        .hero {
-            margin-top: 60px;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(26, 20, 16, 0.85) 0%, rgba(42, 31, 21, 0.85) 50%, rgba(139, 111, 71, 0.85) 100%), 
-                        url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=900&fit=crop') center/cover;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInHero 1s ease-out;
-        }
-
-        @keyframes fadeInHero {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Анимированные элементы фона */
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(196, 165, 116, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            top: 10%;
-            right: 10%;
-            animation: float 8s ease-in-out infinite;
-            filter: blur(40px);
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(139, 111, 71, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            bottom: 5%;
-            left: 5%;
-            animation: float 10s ease-in-out infinite reverse;
-            filter: blur(30px);
-        }
-
-        /* Плавающие иконки */
-        .hero-icons {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            opacity: 0.1;
-        }
-
-        .floating-icon {
-            position: absolute;
-            font-size: 4rem;
-            animation: floatIcon 6s infinite ease-in-out;
-        }
-
-        .icon-1 {
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-
-        .icon-2 {
-            top: 20%;
-            right: 8%;
-            animation-delay: 1s;
-        }
-
-        .icon-3 {
-            bottom: 20%;
-            left: 8%;
-            animation-delay: 2s;
-        }
-
-        .icon-4 {
-            bottom: 15%;
-            right: 10%;
-            animation-delay: 3s;
-        }
-
-        .icon-5 {
-            top: 50%;
-            left: 3%;
-            animation-delay: 1.5s;
-        }
-
-        .icon-6 {
-            top: 60%;
-            right: 5%;
-            animation-delay: 2.5s;
-        }
-
-        @keyframes floatIcon {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-30px) rotate(10deg);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-30px);
-            }
-        }
-
-        .hero-content {
-            text-align: center;
-            z-index: 10;
-            animation: slideUp 1s ease-out;
-            position: relative;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 0.5rem;
-            color: var(--brown-light);
-            font-weight: 900;
-            letter-spacing: -2px;
-            background: linear-gradient(135deg, var(--brown-light), var(--brown-accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero .subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .hero .role-badge {
-            display: inline-block;
-            background: rgba(196, 165, 116, 0.1);
-            border: 1px solid var(--brown-light);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            color: var(--brown-light);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            font-weight: bold;
-        }
-
-        .hero .description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 650px;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 0 1rem;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--brown-light);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--brown-light);
-            color: var(--primary-dark);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s;
-            border: 2px solid var(--brown-light);
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            color: var(--brown-light);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(196, 165, 116, 0.2);
-        }
-
-        /* CONTAINER */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* СЕКЦИИ */
-        section {
-            padding: 6rem 2rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--brown-light);
-            text-align: center;
-        }
-
-        /* SPLIT SCREEN - ОБО МНЕ */
-        .about {
-            padding: 0;
-            background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary-brown) 50%, #2a3a2a 100%);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--card) 100%);
+            color: var(--text);
             min-height: 100vh;
         }
-
-        .about-left {
-            background: linear-gradient(135deg, #0f0a05 0%, #1a1410 100%);
-            padding: 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .about-right {
-            background: linear-gradient(135deg, #2a3a2a 0%, #1a2a1a 100%);
-            padding: 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .about h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--brown-light);
-        }
-
-        .about p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .about-info {
-            display: grid;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .info-item {
-            display: flex;
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(196, 165, 116, 0.05);
-            border-left: 3px solid var(--brown-light);
-            border-radius: 5px;
-        }
-
-        .info-item i {
-            font-size: 1.5rem;
-            color: var(--brown-light);
-            min-width: 30px;
-        }
-
-        /* 3D BOX */
-        .skills-section {
-            background: var(--primary-dark);
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-top: 3rem;
-        }
-
-        .box-3d {
-            width: 300px;
-            height: 300px;
-            position: relative;
-            perspective: 1000px;
-            margin: 0 auto;
-        }
-
-        .box-3d-inner {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.05s linear;
-        }
-
-        .box-face {
-            position: absolute;
-            width: 300px;
-            height: 300px;
+        header {
+            background: rgba(15,10,5,0.95);
+            border-bottom: 1px solid var(--border);
+            padding: 1.2rem 2rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border: 2px solid var(--brown-light);
-            color: var(--brown-light);
-            opacity: 0.9;
-        }
-
-        .box-front { 
-            background: rgba(139, 111, 71, 0.1); 
-            transform: translateZ(150px); 
-        }
-        .box-back { 
-            background: rgba(139, 111, 71, 0.1); 
-            transform: rotateY(180deg) translateZ(150px); 
-        }
-        .box-right { 
-            background: rgba(196, 165, 116, 0.1); 
-            transform: rotateY(90deg) translateZ(150px); 
-        }
-        .box-left { 
-            background: rgba(196, 165, 116, 0.1); 
-            transform: rotateY(-90deg) translateZ(150px); 
-        }
-        .box-top { 
-            background: rgba(139, 111, 71, 0.2); 
-            transform: rotateX(90deg) translateZ(150px); 
-        }
-        .box-bottom { 
-            background: rgba(139, 111, 71, 0.2); 
-            transform: rotateX(-90deg) translateZ(150px); 
-        }
-
-        .skills-list {
-            display: grid;
             gap: 1rem;
-        }
-
-        .skill-item {
-            padding: 1.5rem;
-            background: rgba(196, 165, 116, 0.05);
-            border-left: 4px solid var(--brown-light);
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        .skill-item:hover {
-            background: rgba(196, 165, 116, 0.1);
-            transform: translateX(10px);
-        }
-
-        .skill-name {
-            color: var(--brown-light);
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        /* PROJECTS - MODAL */
-        .projects {
-            background: var(--primary-brown);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: rgba(196, 165, 116, 0.05);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .project-card:hover {
-            border-color: var(--brown-light);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(196, 165, 116, 0.1);
-        }
-
-        /* Особые карты (игры и приложения) */
-        .project-card.featured {
-            border: 2px solid var(--brown-light);
-            background: rgba(196, 165, 116, 0.08);
-            animation: goldenPulse 2s ease-in-out infinite;
-        }
-
-        .project-card.featured .project-image {
-            animation: goldenGlow 2s ease-in-out infinite;
-        }
-
-        @keyframes goldenPulse {
-            0%, 100% {
-                box-shadow: 0 0 20px rgba(196, 165, 116, 0.3), inset 0 0 20px rgba(196, 165, 116, 0);
-            }
-            50% {
-                box-shadow: 0 0 40px rgba(196, 165, 116, 0.6), inset 0 0 20px rgba(196, 165, 116, 0.2);
-            }
-        }
-
-        @keyframes goldenGlow {
-            0%, 100% {
-                background: linear-gradient(135deg, var(--brown-accent), var(--brown-light));
-                filter: brightness(1);
-            }
-            50% {
-                background: linear-gradient(135deg, var(--brown-light), #d4af37);
-                filter: brightness(1.2);
-            }
-        }
-
-        .project-card.featured::before {
-            content: '✨ ОСОБЕННЫЙ ПРОЕКТ ✨';
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(196, 165, 116, 0.9);
-            color: var(--primary-dark);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            z-index: 10;
-            animation: pulse-badge 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse-badge {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--brown-accent), var(--brown-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            color: var(--brown-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .project-desc {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        /* MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
+            position: sticky;
             top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            animation: fadeInModal 0.3s;
+            z-index: 100;
         }
+        header h1 { font-size: 1.4rem; color: var(--light); }
+        header span { color: var(--muted); font-size: 0.9rem; }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
 
-        @keyframes fadeInModal {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background: var(--primary-brown);
-            margin: 5% auto;
-            padding: 2rem;
-            border: 1px solid var(--border-color);
-            width: 90%;
-            max-width: 600px;
-            border-radius: 10px;
-            max-height: 80vh;
-            overflow-y: auto;
-            animation: slideInModal 0.3s;
-        }
-
-        @keyframes slideInModal {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .close {
-            color: var(--text-secondary);
-            float: right;
-            font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .close:hover {
-            color: var(--brown-light);
-        }
-
-        .modal-header {
-            font-size: 1.8rem;
-            color: var(--brown-light);
-            margin-bottom: 1rem;
-        }
-
-        /* MODAL CONTENT STYLING */
-        #modalBody h3 {
-            color: var(--brown-light);
-            font-size: 1.3rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0.8rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-
-        #modalBody h3:first-child {
-            margin-top: 0;
-        }
-
-        #modalBody p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 0.8rem;
-        }
-
-        #modalBody ul {
-            color: var(--text-secondary);
-            padding-left: 1.5rem;
-            line-height: 1.8;
-        }
-
-        #modalBody li {
-            margin-bottom: 0.5rem;
-        }
-
-        #modalBody code {
-            background: rgba(139, 111, 71, 0.2);
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            color: var(--brown-light);
-        }
-
-        #modalBody small {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* CRYPTO COIN */
-        .crypto-section {
-            background: var(--primary-dark);
+        /* Stats */
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.2rem;
             text-align: center;
         }
-
-        .coin-container {
-            perspective: 1000px;
-            margin: 3rem auto;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .coin {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--brown-accent), var(--brown-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            transform-style: preserve-3d;
-            animation: rotateCoin 6s infinite linear;
-            box-shadow: 0 20px 60px rgba(196, 165, 116, 0.3);
-            position: relative;
-            border: 3px solid var(--brown-light);
-        }
-
-        @keyframes rotateCoin {
-            from { transform: rotateY(0deg) rotateX(0deg); }
-            to { transform: rotateY(360deg) rotateX(10deg); }
-        }
-
-        .coin-inner {
-            text-align: center;
-        }
-
-        /* FAQ ACCORDION */
-        .faq-section {
-            background: var(--primary-brown);
-        }
-
-        .faq-container {
-            max-width: 800px;
-            margin: 3rem auto;
-        }
-
-        .faq-item {
-            margin-bottom: 1rem;
-            border: 1px solid var(--border-color);
+        .stat-card .num { font-size: 2rem; font-weight: 700; color: var(--light); }
+        .stat-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+        .progress-bar {
+            background: var(--border);
             border-radius: 8px;
+            height: 8px;
+            margin-bottom: 2rem;
             overflow: hidden;
         }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--light));
+            border-radius: 8px;
+            transition: width 0.4s ease;
+        }
 
-        .faq-question {
+        /* Add task form */
+        .add-form {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
             padding: 1.5rem;
-            background: rgba(196, 165, 116, 0.05);
+            margin-bottom: 2rem;
+        }
+        .add-form h2 { font-size: 1rem; color: var(--light); margin-bottom: 1rem; }
+        .form-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+        .form-row input, .form-row textarea {
+            flex: 1;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            padding: 0.7rem 1rem;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+            min-width: 150px;
+        }
+        .form-row input:focus, .form-row textarea:focus { border-color: var(--accent); }
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-primary { background: var(--accent); color: var(--text); }
+        .btn-primary:hover { background: var(--light); color: var(--bg); }
+        .btn-sm {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+            border-radius: 6px;
+        }
+        .btn-success { background: rgba(90,138,90,0.2); color: #7fbf7f; border: 1px solid #5a8a5a; }
+        .btn-success:hover { background: rgba(90,138,90,0.4); }
+        .btn-danger { background: rgba(138,58,58,0.2); color: #cf8080; border: 1px solid #8a3a3a; }
+        .btn-danger:hover { background: rgba(138,58,58,0.4); }
+
+        /* Filter tabs */
+        .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.2rem; }
+        .tab {
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--muted);
+            transition: all 0.2s;
+        }
+        .tab.active { background: var(--accent); color: var(--text); border-color: var(--accent); }
+
+        /* Task list */
+        .task-list { display: flex; flex-direction: column; gap: 0.8rem; }
+        .task-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s;
-            color: var(--brown-light);
-            font-weight: bold;
-        }
-
-        .faq-question:hover {
-            background: rgba(196, 165, 116, 0.1);
-        }
-
-        .faq-icon {
-            transition: transform 0.3s;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            padding: 0 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding: 1.5rem;
-        }
-
-        /* КОНТАКТЫ */
-        .contact {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary-brown));
-            text-align: center;
-        }
-
-        .contact-content {
-            margin: 3rem 0;
-        }
-
-        .contact-item {
-            display: inline-block;
-            margin: 1rem;
-            padding: 1rem 1.5rem;
-            background: rgba(196, 165, 116, 0.1);
-            border: 1px solid var(--brown-light);
-            border-radius: 50px;
-            color: var(--brown-light);
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .contact-item:hover {
-            background: var(--brown-light);
-            color: var(--primary-dark);
-            transform: scale(1.1);
-        }
-
-        .social-links {
-            margin-top: 2rem;
-            display: flex;
+            align-items: flex-start;
             gap: 1rem;
-            justify-content: center;
+            transition: border-color 0.2s, opacity 0.3s;
         }
-
-        .social-links a {
-            width: 50px;
-            height: 50px;
-            background: rgba(196, 165, 116, 0.1);
-            border: 2px solid var(--brown-light);
+        .task-card.done { opacity: 0.6; }
+        .task-card:hover { border-color: var(--accent); }
+        .task-check {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--accent);
             border-radius: 50%;
+            cursor: pointer;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--brown-light);
-            text-decoration: none;
-            transition: all 0.3s;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            margin-top: 2px;
         }
-
-        .social-links a:hover {
-            background: var(--brown-light);
-            color: var(--primary-dark);
-            transform: translateY(-5px);
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.5);
-            color: var(--text-secondary);
+        .task-check.checked { background: var(--accent); }
+        .task-body { flex: 1; }
+        .task-title { font-weight: 600; color: var(--text); }
+        .task-card.done .task-title { text-decoration: line-through; color: var(--muted); }
+        .task-desc { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
+        .task-meta { font-size: 0.75rem; color: var(--accent); margin-top: 0.4rem; }
+        .task-actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
+        .empty-state {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem;
+            color: var(--muted);
+            font-size: 1.1rem;
         }
-
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .role-badge {
-                font-size: 0.8rem;
-                padding: 0.4rem 1rem;
-            }
-
-            .hero .description {
-                font-size: 1rem;
-                max-width: 100%;
-            }
-
-            .hero-stats {
-                gap: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 1.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+        .empty-state span { font-size: 3rem; display: block; margin-bottom: 1rem; }
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--accent);
+            color: var(--text);
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        .toast.show { opacity: 1; transform: translateY(0); }
+        @media (max-width: 600px) {
+            .stats { grid-template-columns: repeat(3, 1fr); }
+            .form-row { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <!-- НАВИГАЦИЯ -->
-    <nav>
-        <div class="container">
-            <a href="#" class="logo">🚀</a>
-            <ul>
-                <li><a href="#about">Обо мне</a></li>
-                <li><a href="#skills">Навыки</a></li>
-                <li><a href="#projects">Проекты</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
+<header>
+    <div>
+        <h1>📋 Менеджер Задач</h1>
+        <span>Каримбай Ерсултан — Портфолио Проект</span>
+    </div>
+</header>
+
+<div class="container">
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat-card">
+            <div class="num" id="totalNum">{{ total }}</div>
+            <div class="label">Всего задач</div>
         </div>
-    </nav>
-
-    <!-- HERO СЕКЦИЯ -->
-    <section class="hero">
-        <!-- Плавающие иконки на фоне -->
-        <div class="hero-icons">
-            <div class="floating-icon icon-1">💻</div>
-            <div class="floating-icon icon-2">🚀</div>
-            <div class="floating-icon icon-3">🎮</div>
-            <div class="floating-icon icon-4">⚡</div>
-            <div class="floating-icon icon-5">🎵</div>
-            <div class="floating-icon icon-6">🔥</div>
+        <div class="stat-card">
+            <div class="num" id="activeNum">{{ active }}</div>
+            <div class="label">Активных</div>
         </div>
-
-        <div class="hero-content">
-            <div class="role-badge">💡 Full-Stack Developer в процессе обучения</div>
-            <h1>Каримбай Ерсултан</h1>
-            <p class="subtitle">Программист & Студент 🎓</p>
-            <p class="description">Создаю инновационные сайты, программы и игры. Изучаю современные технологии и постоянно развиваю свои навыки в программировании и веб-разработке.</p>
-            
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-number">2+</div>
-                    <div class="stat-label">Года обучения</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">Проектов</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Мотивации</div>
-                </div>
-            </div>
-
-            <a href="#about" class="cta-button">Узнать больше обо мне</a>
+        <div class="stat-card">
+            <div class="num" id="doneNum">{{ completed }}</div>
+            <div class="label">Выполнено</div>
         </div>
-    </section>
+    </div>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: {{ progress }}%"></div>
+    </div>
 
-    <!-- ABOUT - SPLIT SCREEN -->
-    <section class="about" id="about">
-        <div class="about-content">
-            <div class="about-left">
-                <h3>📚 Обо мне</h3>
-                <p>Я студент 2 курса университета имени Жубанова, изучаю программирование и веб-разработку.</p>
-                <p>Увлекаюсь созданием интерактивных приложений, играм и музыке. Стремлюсь выполнять качественные проекты и расширять свой технический опыт.</p>
-                <div class="about-info">
-                    <div class="info-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <div>
-                            <strong>Университет</strong>
-                            <p style="font-size: 0.9rem;">Жубанов, 2 курс</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-code"></i>
-                        <div>
-                            <strong>Специализация</strong>
-                            <p style="font-size: 0.9rem;">Программирование</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="about-right">
-                <h3>🎯 Интересы</h3>
-                <p>Мои основные направления:</p>
-                <div class="about-info">
-                    <div class="info-item" style="background: rgba(58, 68, 58, 0.3);">
-                        <i class="fas fa-globe"></i>
-                        <div>
-                            <strong>Веб-сайты</strong>
-                            <p style="font-size: 0.9rem;">HTML, CSS, JavaScript</p>
-                        </div>
-                    </div>
-                    <div class="info-item" style="background: rgba(58, 68, 58, 0.3);">
-                        <i class="fas fa-tools"></i>
-                        <div>
-                            <strong>Программы</strong>
-                            <p style="font-size: 0.9rem;">Приложения и утилиты</p>
-                        </div>
-                    </div>
-                    <div class="info-item" style="background: rgba(58, 68, 58, 0.3);">
-                        <i class="fas fa-gamepad"></i>
-                        <div>
-                            <strong>Игры</strong>
-                            <p style="font-size: 0.9rem;">Game Development</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SKILLS - 3D BOX -->
-    <section class="skills-section" id="skills">
-        <div class="container">
-            <h2>Навыки</h2>
-            <div class="skills-container">
-                <div class="box-3d">
-                    <div class="box-3d-inner">
-                        <div class="box-face box-front">Front</div>
-                        <div class="box-face box-back">Back</div>
-                        <div class="box-face box-right">Right</div>
-                        <div class="box-face box-left">Left</div>
-                        <div class="box-face box-top">Top</div>
-                        <div class="box-face box-bottom">Bottom</div>
-                    </div>
-                </div>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <div class="skill-name"><i class="fas fa-check"></i> Основы программирования</div>
-                        <p>Логика, алгоритмы, структуры данных</p>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><i class="fas fa-check"></i> Веб-разработка</div>
-                        <p>HTML, CSS, JavaScript</p>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><i class="fas fa-check"></i> Обучение</div>
-                        <p>Python, C++, C#</p>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><i class="fas fa-check"></i> Дизайн UI</div>
-                        <p>Создание интерфейсов, UX/UI</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS - MODAL -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <h2>Проекты</h2>
-            <div class="projects-grid">
-                <div class="project-card" onclick="openModal('project1')">
-                    <div class="project-image">💻</div>
-                    <div class="project-content">
-                        <div class="project-title">Портфолио</div>
-                        <p class="project-desc">Мой персональный сайт-портфолио</p>
-                        <small>Нажмите для подробнее</small>
-                    </div>
-                </div>
-                <a href="game.html" target="_blank" style="text-decoration: none; color: inherit;">
-                    <div class="project-card featured">
-                        <div class="project-image">🎮</div>
-                        <div class="project-content">
-                            <div class="project-title">Поймай Монеты</div>
-                            <p class="project-desc">Играйте прямо в браузере!</p>
-                            <small>Нажмите для запуска ▶️</small>
-                        </div>
-                    </div>
-                </a>
-                <a href="tasks.html" target="_blank" style="text-decoration: none; color: inherit;">
-                    <div class="project-card featured">
-                        <div class="project-image">📋</div>
-                        <div class="project-content">
-                            <div class="project-title">Менеджер Задач</div>
-                            <p class="project-desc">Управляйте задачами онлайн!</p>
-                            <small>Нажмите для запуска ▶️</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- МОДАЛЬНЫЕ ОКНА -->
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div class="modal-header">Проект</div>
-            <div id="modalBody"></div>
+    <!-- Add form -->
+    <div class="add-form">
+        <h2>➕ Новая задача</h2>
+        <div class="form-row">
+            <input type="text" id="taskTitle" placeholder="Название задачи..." maxlength="100">
+            <input type="text" id="taskDesc" placeholder="Описание (необязательно)..." maxlength="200">
+            <button class="btn btn-primary" onclick="addTask()">Добавить</button>
         </div>
     </div>
 
-    <!-- CRYPTO COIN - SKILLS VISUAL -->
-    <section class="crypto-section">
-        <div class="container">
-            <h2>Мои Компетенции</h2>
-            <div class="coin-container">
-                <div class="coin">
-                    <div class="coin-inner">💡</div>
+    <!-- Filter tabs -->
+    <div class="tabs">
+        <button class="tab active" onclick="filterTasks('all', this)">Все</button>
+        <button class="tab" onclick="filterTasks('active', this)">Активные</button>
+        <button class="tab" onclick="filterTasks('done', this)">Выполненные</button>
+    </div>
+
+    <!-- Task list -->
+    <div class="task-list" id="taskList">
+        {% for task in tasks %}
+        <div class="task-card {% if task.completed %}done{% endif %}"
+             id="task-{{ task.id }}"
+             data-completed="{{ 'true' if task.completed else 'false' }}">
+            <div class="task-check {% if task.completed %}checked{% endif %}"
+                 onclick="toggleTask({{ task.id }})">
+                {% if task.completed %}✓{% endif %}
+            </div>
+            <div class="task-body">
+                <div class="task-title">{{ task.title }}</div>
+                {% if task.description %}
+                <div class="task-desc">{{ task.description }}</div>
+                {% endif %}
+                <div class="task-meta">
+                    Создано: {{ task.created_at }}
+                    {% if task.completed_at %}
+                     · Выполнено: {{ task.completed_at }}
+                    {% endif %}
                 </div>
             </div>
-            <p style="font-size: 1.2rem; color: var(--text-secondary); margin-top: 2rem;">
-                Постоянное развитие и обучение новым технологиям
-            </p>
-        </div>
-    </section>
-
-    <!-- FAQ ACCORDION -->
-    <section class="faq-section" id="faq">
-        <div class="container">
-            <h2>Часто Задаваемые Вопросы</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Какие языки программирования ты изучаешь?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        На данный момент изучаю основы программирования, включая логику и алгоритмы. В процессе изучения Python, C++ и других языков программирования.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Есть ли у тебя завершенные проекты?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        В процессе обучения создаю различные проекты: веб-сайты, простые программы и игры. Это часть моего портфолио и опыта.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Какой стек технологий ты используешь?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Основной стек: HTML, CSS, JavaScript для веб-разработки. Изучаю Python и C++ для создания приложений и программ.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Как с тобой можно связаться?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Ты можешь написать мне по электронной почте или связаться через социальные сети. Контакты указаны в секции "Контакты".
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Ты готов к стажировке?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Да, я открыт к новым возможностям и готов применять свои знания в реальных проектах. Активно учусь и совершенствую свои навыки.
-                    </div>
-                </div>
+            <div class="task-actions">
+                <button class="btn btn-sm btn-danger" onclick="deleteTask({{ task.id }})">🗑</button>
             </div>
         </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2>Свяжись со мной</h2>
-            <div class="contact-content">
-                <p style="font-size: 1.1rem; margin-bottom: 2rem;">Я открыт для предложений сотрудничества и новых проектов</p>
-                <a href="mailto:karimbaiersultan@gmail.com" class="contact-item">
-                    <i class="fas fa-envelope"></i> Email
-                </a>
-                <a href="https://www.instagram.com/erssultx" class="contact-item">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
-                <a href="https://www.linkedin.com/in/%D0%B5%D1%80%D1%81%D1%83%D0%BB%D1%82%D0%B0%D0%BD-%D0%BA%D0%B0%D1%80%D0%B8%D0%BC%D0%B1%D0%B0%D0%B9-67a8a93b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="contact-item">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-            </div>
-            <div class="social-links">
-                <a href="https://www.instagram.com/erssultx"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/%D0%B5%D1%80%D1%81%D1%83%D0%BB%D1%82%D0%B0%D0%BD-%D0%BA%D0%B0%D1%80%D0%B8%D0%BC%D0%B1%D0%B0%D0%B9-67a8a93b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
-               <a href="https://wa.me/77086879124"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:karimbaiersultan@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
+        {% else %}
+        <div class="empty-state" id="emptyState">
+            <span>📭</span>
+            Задач пока нет. Добавьте первую!
         </div>
-    </section>
+        {% endfor %}
+    </div>
+</div>
 
-    <footer>
-        <p>&copy; 2026 Каримбай Ерсултан. Все права защищены.</p>
-    </footer>
+<div class="toast" id="toast"></div>
 
-    <script>
-        // 3D BOX - FOLLOW MOUSE
-        const box3dInner = document.querySelector('.box-3d-inner');
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth) * 10 - 5;
-            const y = (e.clientY / window.innerHeight) * 10 - 5;
-            box3dInner.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
+<script>
+    let currentFilter = 'all';
+
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function updateStats() {
+        const cards = document.querySelectorAll('.task-card');
+        const total = cards.length;
+        const done = [...cards].filter(c => c.dataset.completed === 'true').length;
+        const active = total - done;
+        document.getElementById('totalNum').textContent = total;
+        document.getElementById('activeNum').textContent = active;
+        document.getElementById('doneNum').textContent = done;
+        document.getElementById('progressFill').style.width = total > 0 ? (done/total*100)+'%' : '0%';
+        const empty = document.getElementById('emptyState');
+        if (empty) {
+            const visible = [...cards].filter(c => c.style.display !== 'none');
+            empty.style.display = visible.length === 0 ? 'block' : 'none';
+        }
+    }
+
+    function filterTasks(type, btn) {
+        currentFilter = type;
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.task-card').forEach(card => {
+            if (type === 'all') card.style.display = '';
+            else if (type === 'active') card.style.display = card.dataset.completed === 'false' ? '' : 'none';
+            else card.style.display = card.dataset.completed === 'true' ? '' : 'none';
         });
+        updateStats();
+    }
 
-        // MODAL FUNCTIONS
-        function openModal(projectId) {
-            const modal = document.getElementById('projectModal');
-            const modalBody = document.getElementById('modalBody');
-            
-            const projects = {
-                project1: {
-                    title: 'Портфолио Веб-Сайт',
-                    content: `
-                        <h3>Описание</h3>
-                        <p>Мой персональный сайт-портфолио, созданный с использованием HTML, CSS и JavaScript.</p>
-                        
-                        <h3>Технологии</h3>
-                        <p>HTML, CSS, JavaScript, Font Awesome</p>
-                        
-                        <h3>Особенности</h3>
-                        <ul style="text-align: left; margin-top: 10px;">
-                            <li>✨ Интерактивный 3D куб с эффектом следования за мышью</li>
-                            <li>🪟 Модальные окна для отображения проектов</li>
-                            <li>📖 Аккордеон FAQ с плавными переходами</li>
-                            <li>📱 Адаптивный дизайн</li>
-                            <li>🎨 Анимации и эффекты наведения</li>
-                            <li>🎭 Коричневая палитра цветов</li>
-                        </ul>
-                    `
-                },
-                project2: {
-                    title: '🎮 Поймай Монеты - Catch the Coins',
-                    content: `
-                        <h3>Описание</h3>
-                        <p>Интерактивная игра на Pygame. Цель игры - ловить падающие монеты и избегать препятствий. По мере увеличения счета игра усложняется.</p>
-                        
-                        <h3>Технологии</h3>
-                        <p><strong>Python + Pygame</strong></p>
-                        
-                        <h3>Основные Функции</h3>
-                        <ul style="text-align: left; margin-top: 10px;">
-                            <li>✓ Движение игрока стрелками влево/вправо</li>
-                            <li>💰 Система сбора монет с начислением очков (+10 за монету)</li>
-                            <li>🚫 Система препятствий для повышения сложности</li>
-                            <li>📈 Уровни - повышаются каждые 100 очков</li>
-                            <li>⚡ Динамическая сложность - скорость и количество объектов растут</li>
-                            <li>🎯 Меню, игровой процесс и экран Game Over</li>
-                            <li>📊 Система счета и отслеживание уровня</li>
-                            <li>🎨 Коричневая палитра цветов (как в портфолио)</li>
-                        </ul>
-                        
-                        <h3>Как запустить</h3>
-                        <p><code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px;">python coin_catcher_game.py</code></p>
-                        <p style="margin-top: 10px;"><small>📦 Требует установки: <code>pip install pygame</code></small></p>
-                    `
-                },
-                project3: {
-                    title: '📋 Менеджер Задач - Task Manager',
-                    content: `
-                        <h3>Описание</h3>
-                        <p>Консольное приложение на Python для управления задачами и проектами. Позволяет создавать, удалять, отмечать задачи и отслеживать прогресс.</p>
-                        
-                        <h3>Технологии</h3>
-                        <p><strong>Python 3</strong> (json, datetime, os)</p>
-                        
-                        <h3>Основные Функции</h3>
-                        <ul style="text-align: left; margin-top: 10px;">
-                            <li>➕ Добавление новых задач с описанием</li>
-                            <li>✓ Отметить задачу как выполненную</li>
-                            <li>⟲ Отметить как невыполненную</li>
-                            <li>🗑️ Удаление задач</li>
-                            <li>📋 Просмотр всех задач</li>
-                            <li>📌 Фильтр активных задач</li>
-                            <li>✅ Фильтр выполненных задач</li>
-                            <li>📊 Статистика и прогресс (%)</li>
-                            <li>💾 Сохранение данных в JSON</li>
-                            <li>⏰ Отслеживание времени создания и завершения</li>
-                        </ul>
-                        
-                        <h3>Как запустить</h3>
-                        <p><code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px;">python task_manager.py</code></p>
-                        
-                        <h3>Структура Данных</h3>
-                        <p style="margin-top: 10px;">Каждая задача хранит: ID, название, описание, статус, дату создания и дату завершения.</p>
-                    `
-                }
-            };
+    async function addTask() {
+        const title = document.getElementById('taskTitle').value.trim();
+        const desc = document.getElementById('taskDesc').value.trim();
+        if (!title) { showToast('⚠️ Введите название задачи'); return; }
 
-            const project = projects[projectId];
-            modalBody.innerHTML = `<p>${project.content}</p>`;
-            modal.style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('projectModal').style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('projectModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
-
-        // FAQ ACCORDION
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            faqItem.classList.toggle('active');
-        }
-
-        // Smooth scroll for navigation
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
+        const res = await fetch('/add', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({title, description: desc})
         });
-    </script>
+        const data = await res.json();
+        if (!data.success) { showToast('❌ ' + data.error); return; }
+
+        document.getElementById('taskTitle').value = '';
+        document.getElementById('taskDesc').value = '';
+
+        const task = data.task;
+        const list = document.getElementById('taskList');
+        const emptyState = document.getElementById('emptyState');
+        if (emptyState) emptyState.style.display = 'none';
+
+        const card = document.createElement('div');
+        card.className = 'task-card';
+        card.id = 'task-' + task.id;
+        card.dataset.completed = 'false';
+        card.innerHTML = `
+            <div class="task-check" onclick="toggleTask(${task.id})"></div>
+            <div class="task-body">
+                <div class="task-title">${task.title}</div>
+                ${task.description ? `<div class="task-desc">${task.description}</div>` : ''}
+                <div class="task-meta">Создано: ${task.created_at}</div>
+            </div>
+            <div class="task-actions">
+                <button class="btn btn-sm btn-danger" onclick="deleteTask(${task.id})">🗑</button>
+            </div>`;
+        list.prepend(card);
+        if (currentFilter === 'done') card.style.display = 'none';
+        updateStats();
+        showToast('✓ Задача добавлена');
+    }
+
+    async function toggleTask(id) {
+        const res = await fetch('/complete/' + id, { method: 'POST' });
+        const data = await res.json();
+        if (!data.success) return;
+
+        const card = document.getElementById('task-' + id);
+        const check = card.querySelector('.task-check');
+        const meta = card.querySelector('.task-meta');
+        card.dataset.completed = data.completed ? 'true' : 'false';
+        card.classList.toggle('done', data.completed);
+        check.classList.toggle('checked', data.completed);
+        check.textContent = data.completed ? '✓' : '';
+        if (data.completed) {
+            const now = new Date().toLocaleString('ru-RU');
+            meta.innerHTML = meta.innerHTML.split('·')[0] + ' · Выполнено: ' + now;
+        }
+        if (currentFilter !== 'all') filterTasks(currentFilter, document.querySelector('.tab.active'));
+        updateStats();
+        showToast(data.completed ? '✅ Выполнено!' : '↩️ Возвращено в активные');
+    }
+
+    async function deleteTask(id) {
+        if (!confirm('Удалить задачу?')) return;
+        const res = await fetch('/delete/' + id, { method: 'POST' });
+        const data = await res.json();
+        if (!data.success) return;
+        const card = document.getElementById('task-' + id);
+        card.style.opacity = '0';
+        setTimeout(() => { card.remove(); updateStats(); }, 300);
+        showToast('🗑 Задача удалена');
+    }
+
+    document.getElementById('taskTitle').addEventListener('keydown', e => {
+        if (e.key === 'Enter') addTask();
+    });
+</script>
 </body>
 </html>
